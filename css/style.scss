@@ -1,0 +1,48 @@
+html, body, * {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.error {
+    color: red;
+}
+
+#form-aluno {
+    border: 1px solid #aaa;
+    padding: 20px;
+    
+    h1 {
+        text-transform: uppercase;
+    }
+
+    label {
+        display: block;
+    }
+}
+
+#lista-alunos {
+    h1 {
+        padding-top: 20px;
+        text-transform: uppercase;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background: black;
+    color: white;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
