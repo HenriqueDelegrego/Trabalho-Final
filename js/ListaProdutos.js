@@ -8,7 +8,7 @@ class ListaProdutos extends React.Component {
     render = () => {
 
         return (
-            <section id="lista-alunos">
+            <section id="lista-produtos">
                 <h1>Lista de Produtos</h1>
                 <table>
                     <thead>
@@ -20,9 +20,9 @@ class ListaProdutos extends React.Component {
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody id="tbody-alunos">
-                        {!this.props.alunos.length && <tr><td colSpan="4">Nenhum produto cadastrado.</td></tr>}
-                        {this.props.alunos.map((produto) =>
+                    <tbody id="tbody-produtos">
+                        {!this.props.produtos.length && <tr><td colSpan="4">Nenhum produto cadastrado.</td></tr>}
+                        {this.props.produtos.map((produto) =>
                             <tr key={produto.id}>
                                 <td>{produto.id}</td>
                                 <td>{produto.nome}</td>

@@ -2,7 +2,6 @@ import React from 'react';
 
 import FormProduto from './FormProdutos';
 import ListaProdutos from './ListaProdutos';
-// Atualizada em 11/07 às 18:00. Atualizado até produto
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -15,11 +14,11 @@ class App extends React.Component {
         else {
             this.state = {
                 nextId: 0,
-                alunos: []
+                produtos: []
             }
         }
     }
-    
+
     componentDidUpdate = () => {
         localStorage.setItem('state', JSON.stringify(this.state));
     }
@@ -28,13 +27,15 @@ class App extends React.Component {
         if (produto.id == 0) {
             const nextId = this.state.nextId + 1;
             produto.id = nextId;
-            this.setState({ nextId, alunos: [...this.state.alunos, produto] });
+            this.setState({ nextId, produtos: [...this.state.produtos, produto] });
+            alert("Produto " + produto.nome + " foi adicionado");
         }
         else {
-            const index = this.state.alunos.findIndex(x => x.id == produto.id);
-            const alunos = [...this.state.alunos];
-            alunos[index] = produto;
-            this.setState({ alunos });
+            const index = this.state.produtos.findIndex(x => x.id == produto.id);
+            const produtos = [...this.state.produtos];
+            produtos[index] = produto;
+            this.setState({ produtos });
+            alert("Produto " + produto.nome + " foi editado");
         }
     }
 
@@ -45,15 +46,18 @@ class App extends React.Component {
 
     excluirProduto = (e, produto) => {
         e.preventDefault();
-        const alunos = this.state.alunos.filter(x => x.id != produto.id);
-        this.setState({ alunos });
+        var confirmado = confirm("Deseja excluir: " + produto.nome + "?");
+        if (confirmado == true) {
+            const produtos = this.state.produtos.filter(x => x.id != produto.id);
+            this.setState({ produtos });
+        }
     }
 
     render() {
         return (
             <div>
                 <FormProduto ref={this.form} salvarProduto={this.salvarProduto} />
-                <ListaProdutos alunos={this.state.alunos} excluirProduto={this.excluirProduto} editarProduto={this.editarProduto} />
+                <ListaProdutos produtos={this.state.produtos} excluirProduto={this.excluirProduto} editarProduto={this.editarProduto} />
             </div>
         )
     }

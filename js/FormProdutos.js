@@ -53,7 +53,7 @@ class FormProdutos extends React.Component {
 
     render = () => {
         return (
-            <section id="form-aluno">
+            <section id="form-produto">
                 <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
                     <h1>{this.state.id > 0 ? 'Editar' : 'Adicionar'} PRODUTO</h1>
                     <p>
